@@ -1,9 +1,5 @@
 import java.io.*;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Scanner;
-import java.util.Collections;
-import java.util.Comparator;
 
 public class SlangWord {
     // Menu Supporting
@@ -20,6 +16,8 @@ public class SlangWord {
 
     // Main
     public static void main(String[] args) throws IOException {
-        
+        Dictionary dictionary = new Dictionary();
+
+        dictionary.WriteData();
     }
 }
