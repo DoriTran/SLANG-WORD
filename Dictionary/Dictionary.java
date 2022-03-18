@@ -3,6 +3,7 @@ package Dictionary;
 import java.io.*;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Dictionary {
     private static HashMap<String,String> slang_word = new HashMap<String,String>();
@@ -26,15 +27,18 @@ public class Dictionary {
         String line;
         while ((line = bufferedReader.readLine()) != null) {
             String[] word = line.split("`");
-            if (word.length <= 1) {
-                System.out.println(line);
-                slang_word.put(word[0], "");
-                reverse_word.put("", word[0]);
-            }
-            else if (!slang_word.containsKey(word[0])) {
-                slang_word.put(word[0], word[1]);
+
+            // Slang word to definition
+            slang_word.put(word[0], word[1]);
+
+            // Definition to Slang word
+            if (reverse_word.containsKey(word[1])) {
+                reverse_word.put(word[1], reverse_word.get(word[1]) + "\n" + word[0]);
+            } 
+            else {
                 reverse_word.put(word[1], word[0]);
             }
+
         }
     
         reader.close();      
@@ -60,6 +64,19 @@ public class Dictionary {
     }
 
     // 2. Chức năng tìm kiếm theo definition, hiển thị ra tất cả các slang words mà trong defintion có chứa keyword gõ vào.
+    public static String findByExactMatchDefinition (String definition) {
+        return reverse_word.get(definition);
+    }
+    public static HashMap<String, String> findByDefinition (String definition) {
+        HashMap<String, String> search_result = new HashMap<String, String>();
+
+        for (Map.Entry<String, String> element : slang_word.entrySet()) {
+            if (element.getValue().contains(definition)) {
+                search_result.put(element.getKey(), element.getValue());
+            }
+        }
+        return search_result;
+    }
 
     // 3. Chức năng hiển thị history, danh sách các slang word đã tìm kiếm.
 

@@ -3,6 +3,8 @@ package ConsoleMenu;
 import Dictionary.Dictionary;
 
 import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Menu {
     private static char choice = '\0';
@@ -11,8 +13,15 @@ public class Menu {
 
     // Menu position
     public static void inputMenuPosition() {
-        MenuPosition = scanner.nextInt();
-        scanner.nextLine();
+        try {
+            MenuPosition = scanner.nextInt();
+        } 
+        catch (Exception e) {
+            MenuPosition = -1;
+        }
+        finally {
+            scanner.nextLine();
+        }    
     }
     public static Integer getMenuPosition() {
         return MenuPosition;
@@ -208,28 +217,79 @@ public class Menu {
                 break;
         }
     }
-    
+    public static void printContinue() {
+        System.out.print("<Continue?> [YES] <- (Any Keyword) / [NO] <- (N or n): ");
+        try {
+            choice = scanner.nextLine().charAt(0);   
+        }
+        catch (Exception e) {
+            choice = 'y';
+        }
+        finally {
+            System.out.println("");
+            if (choice == 'N' || choice == 'n') {
+                MenuPosition = -1;
+            }    
+        }
+    }
+    public static void printBack() {
+        System.out.print("<Back?> (Press any keyword): ");
+        try {
+            choice = scanner.nextLine().charAt(0);   
+        }
+        catch (Exception e) {
+            choice = '\0';
+        }
+        finally {
+            System.out.println("");
+            MenuPosition = -1;   
+        }
+    }
+
     // Feature
     public static void printFeature_SearchByKeyword() {
-        do {
-            System.out.print("> Input slang word: ");
-            String search_result = Dictionary.findByKey(scanner.nextLine());
+        System.out.print("> Input slang word: ");
+        String search_result = Dictionary.findByKey(scanner.nextLine());
 
-            if (search_result != null) {
-                System.out.println("--> Definition: " + search_result);
-            }
-            else {
-                System.out.println("--> No definition found!");
-            }
+        if (search_result != null) {
+            System.out.println("--> Definition: " + search_result);
+        }
+        else {
+            System.out.println("--> No definition found!");
+        }
 
-            System.out.print("<Continue?> (Y/N)(y/n): ");
-            choice = scanner.nextLine().charAt(0);
-            System.out.println("");
-        } while (choice != 'N' && choice != 'n');
-        MenuPosition = -1;
+        printContinue();
     }
     public static void printFeature_SearchByDefinition() {
-        MenuPosition = -1;
+        System.out.print("> Input definition: ");
+        String definition = scanner.nextLine();
+
+        // 1 Second find problem
+        String search_exact = Dictionary.findByExactMatchDefinition(definition);
+        if (search_exact != null) {
+            System.out.println("--> Slang words that match exactly with \"" + definition + "\": ");
+            System.out.println(search_exact);
+        }
+
+        // Contains
+        HashMap<String, String> search_result = Dictionary.findByDefinition(definition);
+        if (search_result.size() > 0) {
+            System.out.println("--> All slang words that contain \"" + definition + "\": ");
+            for (Map.Entry<String, String> search : search_result.entrySet()) {
+                if (search.getKey().length() >= 8) {
+                    System.out.println(search.getKey() + "\t:   " + search.getValue());
+                }
+                else {
+                    System.out.println(search.getKey() + "\t\t:   " + search.getValue());
+                }
+
+            }
+        }
+        else {
+            System.out.println("--> No slang word related found!");
+        }
+
+        printContinue();
     }
     public static void printFeature_3() {
         MenuPosition = -1;
@@ -260,5 +320,6 @@ public class Menu {
     // Close Menu
     public static void close() {
         scanner.close();
+        Render.clearConsole();
     }
 }

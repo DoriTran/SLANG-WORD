@@ -19,6 +19,7 @@ public class SlangWord {
         } while (!Menu.getMenuPosition().equals(0));
 
         // Saving database after loop
-        //Dictionary.WriteData();
+        Dictionary.WriteData();
+        Menu.close();
     }
 }
