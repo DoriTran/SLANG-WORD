@@ -409,7 +409,8 @@ ALT`Alternative character in RPG
 ALU`Arithmetic Logic Unit
 ALV`Asta La Vista| goodbye
 ALWP`Actual Laughter Was Produced
-AMA`Ask Me Anything| Against Medical Advice
+AMA`Ask Me Anything
+Against Medical Advice
 AMAA`Ask Me Almost Anything
 AMAP`As Much As Possible
 AMC`American Motors Corportation
@@ -563,6 +564,7 @@ AWKY`Awkward
 AWNP`All Work, No Play
 AWOL`Absent Without Leave
 AWP`Arctic Warfare Police sniper rifle
+AWS`As We Speak
 AWS`As We Speak
 AWSM`Awesome
 AWW`Cute
@@ -902,7 +904,8 @@ BOLO`Be On The Lookout
 BOLSHY`Bolshevik| communist| Argumentative
 BOLTOP`Better On Lips Than On Paper
 BOM`Bro| dude| friend
-BOMB`Something really bad| Something really good
+BOMB`Something really bad
+Something really good
 BOMBSHELL`Very attractive woman
 BOMM`BOOMM
 BONE UP`Learn about| revise
@@ -1105,7 +1108,8 @@ C/O`Class Of ...
 C1`Affirmative| Roger that
 C2C`Consumer to Consumer| Cam to Cam
 C4`Plastic explosive
-C4C`Comment for Comment| Cam for Cam
+C4C`Comment for Comment
+Cam for Cam
 C:`Very happy
 CAAC`Cool As A Cucumber
 CAB`Misspelling of CBA
@@ -1207,6 +1211,7 @@ CHEDDA`Cash| money
 CHEDDAR`Money
 CHEERIO`Goodbye
 CHEERS`Thanks| Goodbye
+CHEESE`Drug| starter heroin| Money
 CHEESE`Drug| starter heroin| Money
 CHEESY`Corny| lame
 CHEEZ`Cheese
@@ -1996,7 +2001,7 @@ EPROM`Electronically Programmable ROM
 EQ`EverQuest (game)
 EQE`Easy Quick Efficient
 ER`Emergency Room
-IH`Indicating hesitation
+Indicating hesitation
 ERB`Herb| Marijuana
 ERK`Irk| annoy
 ERM`Awkward conversation filler
@@ -2175,6 +2180,7 @@ FL`Fake Laugh
 FLA`Florida
 FLAFF`Foot Loose And Fancy Free
 FLAG`Bandana
+FLAGGED`Banned
 FLAGGED`Banned
 FLAKE`Unreliable person
 FLAKE OUT`Cancel at the last minute
@@ -2513,6 +2519,7 @@ GNR`Guns 'N Roses
 GNSD`Good Night, Sweet Dreams
 GNSTDLTBBB`Good Night Sleep Tight Don't Let the Bed Bugs Bite
 GNU`GNU's Not Unix| Linux OS
+GOAT`Greatest Of All Time
 GOB`Mouth
 GOBLIN`Gangster
 GOD SPEED`Good luck
@@ -2727,7 +2734,8 @@ HAYD`How Are You Doing?
 HAYT`How Are You Today?
 HAYWIRE`Crazy
 HAZE`Type of marijuana
-HB`Hug Back| Hurry Back
+HB`Hug Back
+HB`Hurry Back
 HBCU`Historically Black Colleges and Universities
 HBD`Happy Birthday
 HBK`Heart Break Kid
@@ -2788,7 +2796,8 @@ HGI`How Goes It?
 HGL`Happy Go Lucky
 HGTV`Home and Garden Television
 HGV`Heavy Goods Vehicle
-HH`Ha-Ha| Holding Hands
+HH`Ha-Ha
+HH`Holding Hands
 HHIS`Hanging Head In Shame
 HHOJ`Ha-Ha, Only Joking
 HHOK`Ha-Ha, Only Kidding
@@ -2869,7 +2878,8 @@ HOOAH`HUA
 HOOCHIE`Over made up woman with trashy dress sense
 HOOCHIFIED`Dressed Provocatively
 HOOD`Neighborhood| ghetto
-HOODIE`Hooded sweatshirt| Person wearing a hooded sweatshirt
+HOODIE`Hooded sweatshirt
+Person wearing a hooded sweatshirt
 HOOK ME UP`Share with me
 HOOKED`Addicted
 HOOPS`Basketabll
@@ -3455,6 +3465,8 @@ JFYI`Just For Your Information
 JG`Juicy Gossip
 JGB`Just Got Back
 JGH`Just Got Home
+JGI`Just Google It
+JGL`Just Get Lost
 JGI`Just Google It
 JGL`Just Get Lost
 JHC`Jesus H Christ
@@ -4104,6 +4116,8 @@ MCM`Man Crush Monday
 MCP`Male Chauvanist Pig
 MCR`My Chemical Romance (band)
 MD`Doctor of Medicine| Managing Director
+ MCR`My Chemical Romance (band)
+MD`Doctor of Medicine| Managing Director
 MDA`Drug related to Ecstasy (MDMA)
 MDF`Medium Density Fiberboard
 MDK`Murder Death Kill
@@ -4424,6 +4438,7 @@ NACKER`Irish gypsy| traveller
 NACKERED`Tired| worn out
 NADA`Nothing
 NADDA`Nothing
+NAE`No
 NAE`No
 NAFF`Poor quality| uncool| Substitute swear word
 NAGL`Not A Good Look
@@ -4983,7 +4998,8 @@ OTS`On The Side
 OTT`Over The Top
 OTTH`On The Third Hand
 OTTOMH`Off The Top Of My Head
-OTW`On The Way| On The Whole
+OTW`On The Way
+OTW`On The Whole
 OTY`Over To You
 OTZ`ORZ
 OU`Open University
@@ -5068,6 +5084,7 @@ PBP`Please Be Patient
 PBQ`Please Be Quiet
 PBR`Pabst Blue Ribbon (beer)
 PBS`Public Broadcasting Service
+PBUH`Peace Be Upon Him
 PBUH`Peace Be Upon Him
 PBWU`Peace Be With You
 PBWY`Peace Be With You
@@ -5389,8 +5406,10 @@ PWOS`Parents Watching Over Shoulder
 PWP`Plot? What Plot?
 PWT`Poor White Trash
 PX`Post Exchange| Part Exchange
+PYP`Play Your Position
 PYT`Pretty Young Thing
 PYP`Play Your Position
+PYT`Pretty Young Thing
 PZ`Peace
 Q`Thank You
 Q&A`Question and Answer
@@ -6034,6 +6053,7 @@ SOUND`Cool| awesome| good
 SOUR`Strong WEED
 SOW`Female police officer
 SOWIE`Sorry
+SOWIE`Sorry
 SOX`Socks
 SOY`Shame On You
 SOYW`Something On Your Wall
@@ -6355,6 +6375,7 @@ TEKKERS`Technique
 TELNET`Network Virtual Terminal Protocol
 TEMP`Temporary
 TEN`Person with a perfect body
+TEOTWAWKI`The End Of The World As We Know It
 TEOTWAWKI`The End Of The World As We Know It
 TERRIBAD`Terrible and Bad, awful
 TEVS`Whatever
@@ -7312,6 +7333,7 @@ WUWH`Wish You Were Here
 WUWT`What's Up With That
 WUWTA`What You Wanna Talk About?
 WUWTB`What You Wanna Talk 'Bout?
+WUWU`What's Up With You?
 WUWU`What's Up With You?
 WUZ`Was
 WW`White Widow| White Woman

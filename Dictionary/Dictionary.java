@@ -1,19 +1,15 @@
+package Dictionary;
+
 import java.io.*;
 import java.io.IOException;
 import java.util.HashMap;
 
 public class Dictionary {
-    HashMap<String,String> slang_word;
-    HashMap<String,String> reverse_word;
+    private static HashMap<String,String> slang_word = new HashMap<String,String>();
+    private static HashMap<String,String> reverse_word = new HashMap<String,String>();
 
     // Database
-    public Dictionary() throws IOException {
-        slang_word = new HashMap<String,String>();
-        reverse_word = new HashMap<String,String>();
-        this.LoadData();
-    }
-
-    public void LoadData() throws IOException {     
+    public static void LoadData() throws IOException {     
         FileReader reader;
     
         // Check file if it exists
@@ -30,17 +26,20 @@ public class Dictionary {
         String line;
         while ((line = bufferedReader.readLine()) != null) {
             String[] word = line.split("`");
-            if (word.length <= 1) continue;
-            else if (!this.slang_word.containsKey(word[0])) {
-                this.slang_word.put(word[0], word[1]);
-                this.reverse_word.put(word[1], word[0]);
+            if (word.length <= 1) {
+                System.out.println(line);
+                slang_word.put(word[0], "");
+                reverse_word.put("", word[0]);
+            }
+            else if (!slang_word.containsKey(word[0])) {
+                slang_word.put(word[0], word[1]);
+                reverse_word.put(word[1], word[0]);
             }
         }
     
         reader.close();      
     }
-
-    public void WriteData() throws IOException {
+    public static void WriteData() throws IOException {
         FileWriter writer = new FileWriter("slang_data.txt");
 
         // Write data to file
@@ -50,8 +49,15 @@ public class Dictionary {
 
         writer.close();
     }
+    public static Integer size()  {
+        return slang_word.size();
+    }
+
 
     // 1. Chức năng tìm kiếm theo slang word.
+    public static String findByKey (String key) {
+        return slang_word.get(key);
+    }
 
     // 2. Chức năng tìm kiếm theo definition, hiển thị ra tất cả các slang words mà trong defintion có chứa keyword gõ vào.
 
