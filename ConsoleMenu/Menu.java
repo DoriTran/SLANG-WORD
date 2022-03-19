@@ -172,7 +172,7 @@ public class Menu {
 
             // Menu Option Selection
             case -1:
-            inputMenuPosition();
+                inputMenuPosition();
                 break;
 
             // 1. Chức năng tìm kiếm theo slang word.
@@ -185,7 +185,7 @@ public class Menu {
                 break;
             // 3. Chức năng hiển thị history, danh sách các slang word đã tìm kiếm.
             case 3:
-
+                printFeature_ShowHistory();
                 break;
             // 4. Chức năng add 1 slang words mới.
             case 4:
@@ -249,13 +249,16 @@ public class Menu {
     // Feature
     public static void printFeature_SearchByKeyword() {
         System.out.print("> Input slang word: ");
-        String search_result = Dictionary.findByKey(scanner.nextLine());
+        String slang_word = scanner.nextLine();
+        String search_result = Dictionary.findByKey(slang_word);
 
         if (search_result != null) {
             System.out.println("--> Definition: " + search_result);
+            Dictionary.addHistory(slang_word, search_result, false);
         }
         else {
             System.out.println("--> No definition found!");
+            Dictionary.addHistory(slang_word, "No definition found!", false);
         }
 
         printContinue();
@@ -275,7 +278,9 @@ public class Menu {
         HashMap<String, String> search_result = Dictionary.findByDefinition(definition);
         if (search_result.size() > 0) {
             System.out.println("--> All slang words that contain \"" + definition + "\": ");
+            String history = "";
             for (Map.Entry<String, String> search : search_result.entrySet()) {
+                history  = history + (history.equals("") ? "" : "| " ) + search.getKey();
                 if (search.getKey().length() >= 8) {
                     System.out.println(search.getKey() + "\t:   " + search.getValue());
                 }
@@ -284,14 +289,18 @@ public class Menu {
                 }
 
             }
+            Dictionary.addHistory(definition, history , true);
         }
         else {
             System.out.println("--> No slang word related found!");
+            Dictionary.addHistory(definition, "No slang words found!", true);
         }
 
         printContinue();
     }
-    public static void printFeature_3() {
+    public static void printFeature_ShowHistory() {
+        Dictionary.printHistory();
+        printBack();
         MenuPosition = -1;
     }
     public static void printFeature_4() {

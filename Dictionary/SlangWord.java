@@ -9,6 +9,7 @@ public class SlangWord {
     public static void main(String[] args) throws IOException {
         // Loading database before loop
         Dictionary.LoadData();
+        Dictionary.LoadHistory();
 
         // Main loop
         do {
@@ -19,7 +20,8 @@ public class SlangWord {
         } while (!Menu.getMenuPosition().equals(0));
 
         // Saving database after loop
-        Dictionary.WriteData();
+        Dictionary.SaveData();
+        Dictionary.SaveHistory();
         Menu.close();
     }
 }

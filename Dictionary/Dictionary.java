@@ -4,13 +4,15 @@ import java.io.*;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.LinkedList;
 
 public class Dictionary {
     private static HashMap<String,String> slang_word = new HashMap<String,String>();
     private static HashMap<String,String> reverse_word = new HashMap<String,String>();
+    private static LinkedList<String> history = new LinkedList<String>();
 
     // Database
-    public static void LoadData() throws IOException {     
+    public static void LoadData() throws IOException {
         FileReader reader;
     
         // Check file if it exists
@@ -43,7 +45,7 @@ public class Dictionary {
     
         reader.close();      
     }
-    public static void WriteData() throws IOException {
+    public static void SaveData() throws IOException {
         FileWriter writer = new FileWriter("slang_data.txt");
 
         // Write data to file
@@ -53,6 +55,40 @@ public class Dictionary {
 
         writer.close();
     }
+    
+    public static void LoadHistory() throws IOException {
+        FileReader reader;
+    
+        // Check file if it exists
+        try {
+            reader = new FileReader("history.txt");
+        } 
+        catch (IOException e) {
+            System.out.println("Unable to open file");
+            return;
+        }
+    
+        // Load data from file
+        BufferedReader bufferedReader = new BufferedReader(reader);
+        String line;
+        while ((line = bufferedReader.readLine()) != null) {
+            // Slang word to definition
+            history.addFirst(line);
+        }
+    
+        reader.close();
+    }
+    public static void SaveHistory() throws IOException {
+        FileWriter writer = new FileWriter("history.txt");
+
+        // Write data to file
+        for (String line : history) {
+            writer.write(line + "\n");
+        }
+
+        writer.close();
+    }
+    
     public static Integer size()  {
         return slang_word.size();
     }
@@ -79,6 +115,17 @@ public class Dictionary {
     }
 
     // 3. Chức năng hiển thị history, danh sách các slang word đã tìm kiếm.
+    public static void addHistory(String search_keyword, String result, boolean isSearchByDefinition) {
+        String newHistory = (!isSearchByDefinition ? "Search by slang_word\t" : "Search by definition\t") 
+                        + search_keyword + " : " 
+                        + result;
+        history.addFirst(newHistory);
+    }
+    public static void printHistory() {
+        for (String h : history) {
+            System.out.println("> " + h);
+        }
+    }
 
     // 4. Chức năng add 1 slang words mới.
 

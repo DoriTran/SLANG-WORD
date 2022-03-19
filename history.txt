@@ -1,0 +1,8 @@
+Search by slang_word	HH : Ha-Ha| Holding Hands
+Search by definition	Parent : PLOS| PAW| PEMDAS| P911| PWOS| PG-13| PITR| PRW| PG| PIR| POTS| RENTS| KPC
+Search by definition	Exit : No slang words found!
+Search by definition	Fish : DFE| POF| CHIPPY| <><
+Search by slang_word	AB : No definition found!
+Search by slang_word	x : No definition found!
+Search by slang_word	HH : Ha-Ha| Holding Hands
+Search by slang_word	>< : Frustration
