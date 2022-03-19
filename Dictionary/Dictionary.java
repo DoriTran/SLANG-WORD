@@ -128,12 +128,71 @@ public class Dictionary {
     }
 
     // 4. Chức năng add 1 slang words mới.
+    public static void addNewSlangWord(String newSlangWord, String newDefinition) {
+        slang_word.put(newSlangWord, newDefinition);
+        reverse_word.put(newDefinition, newSlangWord);
+    }
 
     // 5. Chức năng edit 1 slang word.
-
+    public static boolean isExist(String slangword) {
+        return slang_word.containsKey(slangword);
+    }
+    public static void editSlangWord(String slangword, String newSlangword) {
+        reverse_word.put(slang_word.get(slangword), newSlangword);
+        slang_word.put(newSlangword, slang_word.get(slangword));
+        slang_word.remove(slangword);
+    }
+    public static void editDefinition(String slangword, String newDefinition) {
+        reverse_word.put(newDefinition, slangword);
+        reverse_word.remove(slang_word.get(slangword));
+        slang_word.put(slangword, newDefinition);
+    }
+    
     // 6. Chức năng delete 1 slang word. Confirm trước khi xoá.
+    public static void removeSlangWord(String slangword) {
+        reverse_word.remove(slang_word.get(slangword));
+        slang_word.remove(slangword);
+    }
 
     // 7. Chức năng reset danh sách slang words gốc.
+    public static void resetDatabase()  throws IOException {
+        // Empty 2 hashmap
+        slang_word.clear();
+        reverse_word.clear();
+
+        // Read from back up database
+        FileReader reader;
+    
+        // Check file if it exists
+        try {
+            reader = new FileReader("slang_backup.txt");
+        } 
+        catch (IOException e) {
+            System.out.println("Unable to open file");
+            return;
+        }
+    
+        // Load data from file
+        BufferedReader bufferedReader = new BufferedReader(reader);
+        String line;
+        while ((line = bufferedReader.readLine()) != null) {
+            String[] word = line.split("`");
+
+            // Slang word to definition
+            slang_word.put(word[0], word[1]);
+
+            // Definition to Slang word
+            if (reverse_word.containsKey(word[1])) {
+                reverse_word.put(word[1], reverse_word.get(word[1]) + "\n" + word[0]);
+            } 
+            else {
+                reverse_word.put(word[1], word[0]);
+            }
+
+        }
+    
+        reader.close();   
+    }
 
     // 8. Chức năng random 1 slang word (On this day slang word).
 

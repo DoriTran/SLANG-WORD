@@ -2,6 +2,7 @@ package ConsoleMenu;
 
 import Dictionary.Dictionary;
 
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.HashMap;
 import java.util.Map;
@@ -164,7 +165,7 @@ public class Menu {
         }
         
     }
-    public static void printFeature() {
+    public static void printFeature() throws IOException {
         switch (MenuPosition) {
             // None
             case 0: 
@@ -178,7 +179,7 @@ public class Menu {
             // 1. Chức năng tìm kiếm theo slang word.
             case 1:
                 printFeature_SearchByKeyword();
-                break;
+                break;               
             // 2. Chức năng tìm kiếm theo definition, hiển thị ra tất cả các slang words mà trong defintion có chứa keyword gõ vào.
             case 2:
                 printFeature_SearchByDefinition();
@@ -189,19 +190,19 @@ public class Menu {
                 break;
             // 4. Chức năng add 1 slang words mới.
             case 4:
-
+                printFeature_AddNewSlangWord();
                 break;
             // 5. Chức năng edit 1 slang word.
             case 5:
-
+                printFeature_EditSlangWord();
                 break;
             // 6. Chức năng delete 1 slang word. Confirm trước khi xoá.
             case 6:
-
+                printFeature_DeleteSlangWord();
                 break;
             // 7. Chức năng reset danh sách slang words gốc.
             case 7:
-
+                printFeature_ResetDatabase();
                 break; 
             // 8. Chức năng random 1 slang word (On this day slang word).
             case 8:
@@ -217,6 +218,8 @@ public class Menu {
                 break;
         }
     }
+    
+    // Print Option
     public static void printContinue() {
         System.out.print("<Continue?> [YES] <- (Any Keyword) / [NO] <- (N or n): ");
         try {
@@ -244,6 +247,26 @@ public class Menu {
             System.out.println("");
             MenuPosition = -1;   
         }
+    }
+    public static boolean printYesNoOption() {
+        System.out.print("[Enter or anykey -> YES] [N/n -> NO]: ");
+        try {
+            choice = scanner.nextLine().charAt(0);   
+        }
+        catch (Exception e) {
+            System.out.println("[YES]");
+            choice = 'y';
+            return true;
+        }
+
+        if (choice == 'N' || choice == 'n') {
+            System.out.println("[NO]");
+            return false;
+        } 
+        else {
+            System.out.println("[YES]");
+            return true;
+        } 
     }
 
     // Feature
@@ -301,19 +324,114 @@ public class Menu {
     public static void printFeature_ShowHistory() {
         Dictionary.printHistory();
         printBack();
-        MenuPosition = -1;
     }
-    public static void printFeature_4() {
-        MenuPosition = -1;
+    public static void printFeature_AddNewSlangWord() {
+        // Input Slang word
+        String newSlangWord = "";
+        do {
+            System.out.print("> Input new Slangword : ");
+            newSlangWord = scanner.nextLine();
+            // Checking Slangword
+            if (newSlangWord.isEmpty()) {
+                System.out.println("- Slangword must not be empty! - Retype");
+            }
+        } while (newSlangWord.isEmpty());
+
+        // Input Definition
+        String newDefinition = "";
+        do {
+            System.out.print("> Input new Definition: ");
+            newDefinition = scanner.nextLine();
+            // Checking Definition
+            if (newDefinition.isEmpty()) {
+                System.out.println("- Definition must not be empty! - Retype");
+            }
+        } while (newDefinition.isEmpty());
+
+        // Add new word
+        Dictionary.addNewSlangWord(newSlangWord, newDefinition);
+
+        printContinue();
     }
-    public static void printFeature_5() {
-        MenuPosition = -1;
+    public static void printFeature_EditSlangWord() {
+        // Find Slangword
+        String editSlangWord = "";
+        String newSlangWord = "";
+        String newDefinition = "";
+
+        // Search for slang word to edit
+        do {
+            System.out.print("> Input Slangword you want to edit: ");
+            editSlangWord = scanner.nextLine();
+            if (!Dictionary.isExist(editSlangWord)) {
+                System.out.println("- Slang Word doesn't exist in dictionary! - Retype");
+                editSlangWord = "";
+            }
+        } while (editSlangWord.isEmpty());
+        System.out.println("\n- Slang Word found!\t" + editSlangWord + " : " + Dictionary.findByKey(editSlangWord));
+
+        // Editing slang_word
+        System.out.println("\n> Change from \""+ editSlangWord +"\" to new slang word has same definition?: ");
+        if (printYesNoOption()) {
+            do {
+                System.out.print("> Input new Slang word to change to: ");
+                newSlangWord = scanner.nextLine();
+                if (newSlangWord.isEmpty()) {
+                    System.out.println("- Slang Word must not be empty! - Retype");
+                } else {
+                    Dictionary.editSlangWord(editSlangWord, newSlangWord);
+                }
+            } while (newSlangWord.isEmpty());
+        }
+
+        // Editing definition of this slangword
+        System.out.println("\n> Change definition of this slang word?: ");
+        if (printYesNoOption()) {
+            do {
+                System.out.print("> Input new Definition: ");
+                newDefinition = scanner.nextLine();
+                if (newDefinition.isEmpty()) {
+                    System.out.println("- Definition must not be empty! - Retype");
+                } else {
+                    if (newSlangWord.isEmpty()) {
+                        Dictionary.editDefinition(editSlangWord, newDefinition);
+                    }
+                    else {
+                        Dictionary.editDefinition(newSlangWord, newDefinition);
+                    }
+                }
+            } while (newDefinition.isEmpty());
+        }
+
+        printContinue();
     }
-    public static void printFeature_6() {
-        MenuPosition = -1;
+    public static void printFeature_DeleteSlangWord() {
+        // Find Slangword
+        String deleteSlangWord = "";
+
+        // Search for slang word to edit
+        do {
+            System.out.print("> Input Slangword you want to edit: ");
+            deleteSlangWord = scanner.nextLine();
+            if (!Dictionary.isExist(deleteSlangWord)) {
+                System.out.println("- Slang Word doesn't exist in dictionary! - Retype");
+                deleteSlangWord = "";
+            }
+        } while (deleteSlangWord.isEmpty());
+        System.out.println("\n- Slang Word found!\t" + deleteSlangWord + " : " + Dictionary.findByKey(deleteSlangWord));
+
+        // Confirmation
+        System.out.println("\n> Confirm delete this slang word and it definition permanently?: ");
+        if (printYesNoOption()) {
+            Dictionary.removeSlangWord(deleteSlangWord);
+        }
+        printContinue();
     }
-    public static void printFeature_7() {
-        MenuPosition = -1;
+    public static void printFeature_ResetDatabase() throws IOException {
+        System.out.println("Reseting original slang word database . . . !");
+        Dictionary.resetDatabase();
+        System.out.println("Slang word database is reset!");
+        printBack();
     }
     public static void printFeature_8() {
         MenuPosition = -1;
