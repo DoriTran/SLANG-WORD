@@ -493,12 +493,12 @@ public class Menu {
     public static void printFeature_QuizRandomDefinition() {
         ArrayList<String> randomDefinition = Dictionary.getRandomSlangWord_and_ItsDefinition();
         ArrayList<String> answer = Dictionary.getRandomSlangWord(3);
-        answer.add(randomDefinition.get(1));
+        answer.add(randomDefinition.get(0));
 
         System.out.println(">------------------------------------------------------------------------------------<");
-        System.out.println("| Quiz: Choose the correct slang word of this definition: " + randomDefinition.get(0));
+        System.out.println("| Quiz: Choose the correct slang word of this definition: " + randomDefinition.get(1));
         System.out.println(">------------------------------------------------------------------------------------<");
-        printRandomOption(answer, randomDefinition.get(1));
+        printRandomOption(answer, randomDefinition.get(0));
         printContinue();
     }
 

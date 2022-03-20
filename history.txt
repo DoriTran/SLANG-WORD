@@ -1,13 +1,22 @@
-Search by slang_word	<Two> : No definition found!
-Search by slang_word	<Two> : This Is Two
-Search by definition	Four : 4X4| 4WD| FOFO| <Four>| IV
-Search by slang_word	HH : Ha-Ha| Holding Hands
-Search by definition	Parent : PLOS| PAW| PEMDAS| P911| PWOS| PG-13| PITR| PRW| PG| PIR| POTS| RENTS| KPC
-Search by definition	Exit : No slang words found!
-Search by definition	Fish : DFE| POF| CHIPPY| <><
-Search by slang_word	AB : No definition found!
-Search by slang_word	x : No definition found!
-Search by slang_word	HH : Ha-Ha| Holding Hands
-Search by slang_word	>< : Frustration
-Search by slang_word	OldSlang : My New Slang Word
+Search by slang_word	ThisForResetTest : No definition found!
+Search by slang_word	ThisForResetTest : reseting dictionary
+Search by slang_word	MyOldSlangWord : No definition found!
+Search by definition	None has slang : No slang words found!
+Search by definition	Second : SWANK| BPS| DPS| 30STM| SLD| GCSE| SEC| HOAS| IAS| MIPS| MBPS| ASN| JAS| ESL
+Search by definition	Before Common Era : BCE
+Search by slang_word	NONe has diefi : No definition found!
+Search by slang_word	$ : Dollar| money
+Search by slang_word	BBQ : Barbecue| Better Be Quick
 Search by definition	Slang : OldSlang
+Search by slang_word	OldSlang : My New Slang Word
+Search by slang_word	>< : Frustration
+Search by slang_word	HH : Ha-Ha| Holding Hands
+Search by slang_word	x : No definition found!
+Search by slang_word	AB : No definition found!
+Search by definition	Fish : DFE| POF| CHIPPY| <><
+Search by definition	Exit : No slang words found!
+Search by definition	Parent : PLOS| PAW| PEMDAS| P911| PWOS| PG-13| PITR| PRW| PG| PIR| POTS| RENTS| KPC
+Search by slang_word	HH : Ha-Ha| Holding Hands
+Search by definition	Four : 4X4| 4WD| FOFO| <Four>| IV
+Search by slang_word	<Two> : This Is Two
+Search by slang_word	<Two> : No definition found!
