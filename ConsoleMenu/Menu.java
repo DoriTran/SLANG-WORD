@@ -30,15 +30,6 @@ public class Menu {
         return MenuPosition;
     }
 
-    // Get Keyboard Event
-    public static String getChoice() {
-        return scanner.nextLine().toLowerCase();
-    }
-
-    public static String getString() {
-        return scanner.nextLine();
-    }
-
     // Print Menu & Feature
     public static void printMenu() {
         Render.clearConsole();
