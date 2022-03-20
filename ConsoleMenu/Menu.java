@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Menu {
     private static char choice = '\0';
@@ -206,15 +208,15 @@ public class Menu {
                 break; 
             // 8. Chức năng random 1 slang word (On this day slang word).
             case 8:
-
+                printFeature_OnThisDaySlangWord();
                 break;
             // 9. Chức năng đố vui, chương trình hiển thị 1 random slang word, với 4 đáp án cho người dùng chọn.
             case 9:
-
+                printFeature_QuizRandomSlangWord();
                 break;
             // 10. Chức năng đố vui, chương trình hiển thị 1 definition, với 4 slang words đáp án cho người dùng chọn.
             case 10:
-
+                printFeature_QuizRandomDefinition();
                 break;
         }
     }
@@ -268,7 +270,45 @@ public class Menu {
             return true;
         } 
     }
+    public static void printRandomOption(ArrayList<String> answers, String trueAnswer) {
+        Collections.shuffle(answers);
+        System.out.println("");
+        System.out.println(">-----------------------------------------------<");
+        for (int i = 0; i < answers.size(); i++) {
+            System.out.println("|  " + (i+1) + ". " + answers.get(i));
+        }
+        System.out.println(">-----------------------------------------------<");
 
+        do {
+            System.out.print("Enter your answer: ");
+            try {
+                choice = scanner.nextLine().charAt(0);   
+            }
+            catch (Exception e) {
+                choice = '\0';
+                System.out.println("Answer must not be empty! - Retype");
+                continue;
+            }
+            
+            // If character is digit or if digit then must be between
+            if (!Character.isDigit(choice) || 
+                (Character.isDigit(choice) && (Integer.parseInt(String.valueOf(choice)) > answers.size() || Integer.parseInt(String.valueOf(choice)) <= 0))) {
+                System.out.println("Answer must be a number between (1 and " + answers.size() + ") ! - Retype");
+                choice = '\0';
+            }
+            else {
+                Integer Option = Integer.parseInt(String.valueOf(choice));
+                if (answers.get(Option - 1).equals(trueAnswer)) {
+                    System.out.println("> Congratulations, " + Option + ". " + answers.get(Option - 1) + " is the correct answer!");
+                }
+                else {
+                    System.out.println("> Unfortunately, " + Option + ". " + answers.get(Option - 1) + " is NOT the correct answer!");
+                    System.out.println("> The correct answer is: " + trueAnswer + ", good luck next time");
+                }
+            }
+        } while (choice == '\0');
+    }
+    
     // Feature
     public static void printFeature_SearchByKeyword() {
         System.out.print("> Input slang word: ");
@@ -433,16 +473,34 @@ public class Menu {
         System.out.println("Slang word database is reset!");
         printBack();
     }
-    public static void printFeature_8() {
-        MenuPosition = -1;
+    public static void printFeature_OnThisDaySlangWord() {
+        ArrayList<String> randomSlangWords = Dictionary.getRandomSlangWord_and_ItsDefinition();
+        System.out.println("> Random slang word:\n " + randomSlangWords.get(0) + "\t:\t" + randomSlangWords.get(1) + "\n");
+        System.out.println("> Get another random slang word?");
+        printContinue();
     }
-    public static void printFeature_9() {
-        MenuPosition = -1;
-    }
-    public static void printFeature_10() {
-        MenuPosition = -1;
-    }
+    public static void printFeature_QuizRandomSlangWord() {
+        ArrayList<String> randomSlangWord = Dictionary.getRandomSlangWord_and_ItsDefinition();
+        ArrayList<String> answer = Dictionary.getRandomDefinition(3);
+        answer.add(randomSlangWord.get(1));
 
+        System.out.println(">------------------------------------------------------------------------------------<");
+        System.out.println("| Quiz: Choose the correct definition of this slang word: " + randomSlangWord.get(0));
+        System.out.println(">------------------------------------------------------------------------------------<");
+        printRandomOption(answer, randomSlangWord.get(1));
+        printContinue();
+    }
+    public static void printFeature_QuizRandomDefinition() {
+        ArrayList<String> randomDefinition = Dictionary.getRandomSlangWord_and_ItsDefinition();
+        ArrayList<String> answer = Dictionary.getRandomSlangWord(3);
+        answer.add(randomDefinition.get(1));
+
+        System.out.println(">------------------------------------------------------------------------------------<");
+        System.out.println("| Quiz: Choose the correct slang word of this definition: " + randomDefinition.get(0));
+        System.out.println(">------------------------------------------------------------------------------------<");
+        printRandomOption(answer, randomDefinition.get(1));
+        printContinue();
+    }
 
     // Close Menu
     public static void close() {

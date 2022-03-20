@@ -4,12 +4,15 @@ import java.io.*;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class Dictionary {
     private static HashMap<String,String> slang_word = new HashMap<String,String>();
     private static HashMap<String,String> reverse_word = new HashMap<String,String>();
     private static LinkedList<String> history = new LinkedList<String>();
+    private static Random generator = new Random();
 
     // Database
     public static void LoadData() throws IOException {
@@ -92,7 +95,6 @@ public class Dictionary {
     public static Integer size()  {
         return slang_word.size();
     }
-
 
     // 1. Chức năng tìm kiếm theo slang word.
     public static String findByKey (String key) {
@@ -195,9 +197,35 @@ public class Dictionary {
     }
 
     // 8. Chức năng random 1 slang word (On this day slang word).
+    public static ArrayList<String> getRandomSlangWord_and_ItsDefinition() {
+        ArrayList<String> slang = new ArrayList<String>(slang_word.keySet());
+        
+        ArrayList<String> result = new ArrayList<String>();
+        result.add(slang.get(generator.nextInt(slang.size())));
+        result.add(slang_word.get(result.get(0)));
+        return result;
+    }
 
     // 9. Chức năng đố vui, chương trình hiển thị 1 random slang word, với 4 đáp án cho người dùng chọn.
+    public static ArrayList<String> getRandomSlangWord(int numberOfSlangWords) {
+        ArrayList<String> keySet = new ArrayList<String>(slang_word.keySet());
+
+        ArrayList<String> result = new ArrayList<String>();
+        for (int i = 0; i < numberOfSlangWords; i++) {
+            result.add(keySet.get(generator.nextInt(keySet.size())));
+        }
+        return result;
+    }
 
     // 10. Chức năng đố vui, chương trình hiển thị 1 definition, với 4 slang words đáp án cho người dùng chọn.
+    public static ArrayList<String> getRandomDefinition(int numberOfDefinitions) {
+        ArrayList<String> values = new ArrayList<String>(slang_word.values());
 
+        ArrayList<String> result = new ArrayList<String>();
+        for (int i = 0; i < numberOfDefinitions; i++) {
+            result.add(values.get(generator.nextInt(values.size())));
+        }
+        return result;
+
+    }
 }
